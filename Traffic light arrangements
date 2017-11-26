@@ -1,1 +1,13 @@
-
+def coloring(G):
+    color = 0
+    groups = set()
+    verts = vertices(G)      #图的表示
+    while verts:
+        new_group = set()
+        for v in list(verts):
+            if not_adjacent_with_set(v, new_group, G):       #图的操作
+                new_group.add(v)
+                verts.remove(v)
+        groups.add((color, new_group))
+        color += 1
+    return groups
